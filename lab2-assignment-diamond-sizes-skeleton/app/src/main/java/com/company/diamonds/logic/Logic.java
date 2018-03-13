@@ -43,10 +43,119 @@ public class Logic
      * This is the method that will (eventually) get called when the
      * on-screen button labeled 'Process...' is pressed.
      */
-    public void process(int size) {
 
-        // TODO -- add your code here
-
+    void pama(int s){
+        int shirina=s*2+2;
+        for (int i=0; i<shirina; i++)
+        {
+            if (i==0 || i==shirina-1)
+                mOut.print('+');
+            else
+                mOut.print('-');
+        }
+        mOut.print('\n');
     }
 
+    void pomb(int centr, int a, int b, int s)
+    {
+        for(int i=0; i<centr; i++)
+        {
+            mOut.print('|');
+            for(int k=0; k<a;k++) mOut.print(' ');
+            mOut.print('/');
+            if(b!=0)
+            {
+                for(int j=0; j<b;j++)
+                {
+                    if(b%2!=0)
+                    {
+                        mOut.print('-');
+                        mOut.print('-');
+                    }
+                    else
+                    {
+                        mOut.print('=');
+                        mOut.print('=');
+                    }
+                }
+            }
+            mOut.print((char)92);
+            for(int k=0; k<a;k++) mOut.print(' ');
+            mOut.print('|');
+            mOut.print('\n');
+            b++;
+            a--;
+        }
+
+        mOut.print('|');
+        mOut.print('<');
+        for(int l=0; l<s*2-2; l++)
+        {
+            if(s%2==0) mOut.print('-');
+            else mOut.print('=');
+        }
+        mOut.println(">|");
+
+        for(int i=0;i<centr;i++)
+        {
+            mOut.print('|');
+            for(int k=0;k<a+1;k++) mOut.print(' ');
+            mOut.print((char)92);
+            if(b!=0)
+            {
+                for(int j=0;j<b-1;j++)
+                {
+                    if(b%2==0)
+                    {
+                        mOut.print('-');
+                        mOut.print('-');
+                    }
+                    else
+                    {
+                        mOut.print('=');
+                        mOut.print('=');
+                    }
+                }
+            }
+            mOut.print('/');
+            for(int k=0;k<a+1;k++) mOut.print(' ');
+            mOut.print('|');
+            mOut.print('\n');
+            a++;
+            b--;
+        }
+
+
+
+        int shirina=s*2+2;
+        for (int i=0; i<shirina; i++)
+        {
+            if (i==0 || i==shirina-1)
+                mOut.print('+');
+            else
+                mOut.print('-');
+        }
+        mOut.print('\n');
+    }
+    void centra(int s){
+        int centr=s-1;
+        if (centr!=0)
+        {
+            int a = centr;
+            int b =0;
+            pama(s);
+            pomb(centr, a, b, s);
+
+        }
+        else mOut.println("|<>|");
+    }
+
+
+    public void process(int size)
+    {
+        centra(size);
+    }
+    // TODO -- add your code here
 }
+
+
